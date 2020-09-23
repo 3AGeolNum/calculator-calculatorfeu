@@ -27,3 +27,4 @@ if(COMPILE_TESTS)
 	message(STATUS "Configuring FireCalculator with tests")
 	add_subdirectory(tests)
 endif()
+

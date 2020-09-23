@@ -29,6 +29,6 @@ if(COMPILE_TESTS)
 	# Enable testings with CTest
 	enable_testing()
 	message(STATUS "Configuring FireCalculator with tests")
-	add_subdirectory(tests)
+	add_subdirectory(test)
 endif()
 

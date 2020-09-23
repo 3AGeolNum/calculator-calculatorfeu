@@ -1,4 +1,5 @@
 add_executable(test_Tree test_Tree.cpp)
-target_link_libraries(test_Tree PRIVATE "${PROJECT_SOURCE_DIR}/src/include")
+message(STATUS "TEST DIR ${PROJECT_SOURCE_DIR}/src/include")
+target_include_directories(test_Tree PRIVATE "${PROJECT_SOURCE_DIR}/src/include")
 add_test(NAME test_Tree COMMAND test_Tree)
 

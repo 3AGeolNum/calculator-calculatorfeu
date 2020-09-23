@@ -13,7 +13,7 @@ option(COMPILE_EXE "Compile executable" OFF)
 if(COMPILE_EXE)
 	# add the executable (target)
 	message(STATUS "Configuring FireCalculator with .exe")	
-	add_executable(main/Calculator.cpp)
+	add_executable(calculator main/Calculator.cpp)
 endif()
 
 

@@ -28,6 +28,41 @@ void remove_space(std::string &string_with_spaces, int size_of_string){
 
 }
 
+void replace_comma_by_point(std::string &input_from_user, int size_of_string){
+    for (int char_index = 0; char_index < size_of_string-1; ++char_index){
+            if (input_from_user[char_index] == ','){
+                std::cout << "Comma spotted" << std::endl;
+                input_from_user[char_index] = '.';
+            }
+    }
+}
+
+void replace_non_operator_minus(std::string &input_from_user, int &size_of_string){
+
+    char multiply = '*';
+    char divide = '/';
+    char pluss = '+';
+    char minuss = '-';
+
+    if (input_from_user[0] == '-' && input_from_user[1] == '-'){
+            input_from_user.erase(0,2);
+    size_of_string -= 2;
+    }
+    if (input_from_user[0] == '-'){
+        input_from_user[0] = '_';
+    }
+    for (int char_index = 0; char_index < size_of_string-1; ++char_index){
+        //Checking if two successive characters are operator
+        char actual_char = input_from_user[char_index];
+        char next_char = input_from_user[char_index +1];
+        if(actual_char == minuss && next_char == minuss){
+            input_from_user[char_index +1] = '_';
+        }
+
+    }
+
+}
+
 bool is_input_empty(std::string input_from_user, int size_of_string){
     //the string does not have any spaces
     //It checks if the string is empty or not after removing the strings
@@ -138,6 +173,8 @@ bool no_successive_operators(std::string input_from_user, int size_of_string){
 
 }
 
+
+
 bool checkInput(std::string input_from_user){
 
     int size_of_string = input_from_user.size();
@@ -175,7 +212,9 @@ bool checkInput(std::string input_from_user){
 
 int main(){
 
-    std::string test = "89 + 2 +7 *8 +*2 ";
-    checkInput(test);
-
+    std::string test = "--89+2,5+1.8--2";
+    int size_of_string = test.size();
+    //checkInput(test);
+    replace_non_operator_minus(test, size_of_string);
+    std::cout << test << std::endl;
 }

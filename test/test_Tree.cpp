@@ -22,10 +22,10 @@ int main(){
 		tree3 = Tree("+", ptr_tree1bis, ptr_tree2bis);
 		}
 
+
 	Tree tree4("-", ptr_tree1, ptr_tree2);
 	Tree tree5("*", ptr_tree1, ptr_tree2);
 	Tree tree6("/", ptr_tree1, ptr_tree2);
-	std::cout << tree3.eval() << std::endl;
 	if (tree3.eval() != 9) {
 		return 1;
 	}

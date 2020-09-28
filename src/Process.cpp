@@ -3,8 +3,13 @@
 #include <Tree.h>
 #include <string>
 
-Tree* process(std::string input){
-        std::string* ops = ["+", "-","*", "/"];
+Tree* process(std::string input) {
+	std::string ops[4] = {"+", "-", "*", "/"};
+	
+	/*
+
+	See later
+	
 	// looking for an operator in the following order :  +, -, *, /
 	for( std::string::iterator it_op = ops.begin(); it_op != ops.end(); ++it_op ){
                         
@@ -20,6 +25,8 @@ Tree* process(std::string input){
 				return new Tree( op, process(lhs), process(rhs) ); //recursive call
                         }
 		}
+
+	*/
 	// if no operator was found:
 	return new Tree( input ); //no need to say the ptrs are nullptr: value by default in Tree()
 }

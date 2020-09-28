@@ -1,5 +1,11 @@
-add_executable(test_Tree test_Tree.cpp ../src/Tree.cpp)
-message(STATUS "TEST DIR ${PROJECT_SOURCE_DIR}/src/include")
-target_include_directories(test_Tree PRIVATE "${PROJECT_SOURCE_DIR}/src/include")
-add_test(NAME test_Tree COMMAND test_Tree)
+cmake_minimum_required(VERSION 3.10)
 
+if(NOT TARGET calculatorlib)
+	project(FireCalculatorCMake VERSION 1.0)
+	find_package(FireCalculatorCMake REQUIRED CONFIG)
+	enable_testing()
+endif()
+
+add_executable(test_Tree test_Tree.cpp)
+target_link_libraries(test_Tree PUBLIC calculatorlib)
+add_test(NAME test_Tree COMMAND test_Tree)

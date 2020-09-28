@@ -1,12 +1,14 @@
 #include <Tree.h>
+#include <iostream>
 
+Tree::Tree(std::string val) : val_(val), lhs_(nullptr), rhs_(nullptr){
+}
 
-Tree::Tree(std::string val, Tree* lhs, Tree* rhs) : val_(val), lhs_(lhs), rhs_(rhs){
+Tree::Tree(std::string val, Tree*& lhs, Tree*& rhs) : val_(val), lhs_(lhs), rhs_(rhs){
 }
 
 Tree::~Tree(){
-	delete lhs_;
-	delete rhs_;
+
 }
 
 double Tree::eval(){

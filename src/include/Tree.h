@@ -3,7 +3,8 @@
 
 class Tree{
 	public:
-		Tree(std::string val, Tree* lhs = nullptr, Tree* rhs = nullptr);
+		Tree(std::string val);
+		Tree(std::string val, Tree*& lhs, Tree*& rhs);
 		~Tree();
 		double eval();
 

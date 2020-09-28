@@ -30,9 +30,9 @@ option(COMPILE_EXE "Compile executable" OFF)
 
 if(COMPILE_EXE)
 	# add the executable (target)
-	message(STATUS "Configuring FireCalculator with .exe")	
+	message(STATUS "Configuring FireCalculator with .exe")
 	add_executable(calculator main/Calculator.cpp)
-	target_include_directories(calculator PRIVATE "${PROJECT_SOURCE_DIR}/src/include")
+	target_include_directories(calculator PRIVATE calculatorlib)
 endif()
 
 # about tests

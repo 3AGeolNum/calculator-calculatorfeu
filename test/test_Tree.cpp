@@ -24,7 +24,7 @@ int main(){
 		return 1;
 	}
 	else if (tree6.eval() != 0.5) {
-		return 1
+		return 1;
 	}
 	return 0;
 }

@@ -12,10 +12,9 @@ std::string getUserInput(){
 
 }
 
-void remove_space(std::string &string_with_spaces){
+void remove_space(std::string &string_with_spaces, int size_of_string){
 
     std::string str_without_spaces;
-    int size_of_string = string_with_spaces.size();
     const char* space = " ";
     for (int i=0; i<size_of_string; ++i){
 
@@ -29,39 +28,59 @@ void remove_space(std::string &string_with_spaces){
 
 }
 
-bool checkInput(std::string input_from_user){
-
-    remove_space(input_from_user);
-
-    int size_of_string = input_from_user.size();
-
-    //Checking if the input is not empty
+bool is_input_empty(std::string input_from_user, int size_of_string){
+    //the string does not have any spaces
+    //It checks if the string is empty or not after removing the strings
 
     if (size_of_string == 0){
         std::cout << "Error : your calculation is empty : please enter a calculation" << std::endl;
         return false;
     }
 
+        return true;
+
+}
+
+bool start_with_operator(std::string input_from_user){
+    //the string does not have any spaces and is not empty
     //Checking if the calculation begins with a '+', a '*' or a '/'
+
     const char* multiply = "*";
     const char* divide = "/";
     const char* pluss = "+";
     const char* minuss = "-";
 
-    if (input_from_user[0] == *pluss || input_from_user[0] == *multiply || input_from_user[0] == *divide){
-        std::cout << "Error : you put a '+', a '*' or a '/' at the beginning of the calculation" << std::endl;
+    if (input_from_user[0] == *multiply || input_from_user[0] == *divide){
+        std::cout << "Error : you put a '*' or a '/' at the beginning of the calculation" << std::endl;
         return false;
     }
 
+    return true;
 
-    //Checking if the calculation ends with a '+', a '*' or a '/'
+}
+
+bool end_with_operator(std::string input_from_user, int size_of_string){
+    //the string does not have any spaces, is not empty and does not start with an operator (except + or -)
+    //Checking if the calculation ends with a '*' or a '/'
+    const char* multiply = "*";
+    const char* divide = "/";
+    const char* pluss = "+";
+    const char* minuss = "-";
+
+
     if (input_from_user[size_of_string -1] == *pluss || input_from_user[size_of_string -1] == *multiply || input_from_user[size_of_string -1] == *divide || input_from_user[size_of_string -1] == *minuss){
-        std::cout << "Error : you put a '+', a '*' or a '/' at the end of the calculation" << std::endl;
+        std::cout << "Error : you put a '+', a '*', a '-' or a '/' at the end of the calculation" << std::endl;
         return false;
     }
 
-    //Now we are checking if all the input characters are corrects
+    return true;
 
+
+}
+
+bool all_characters_are_valid(std::string input_from_user, int size_of_string){
+    //the string does not have any spaces, is not empty and does not start (except + or -) or end with an operator
+    //Checking if the characters are allowed
     char allowed_chars_array[16];
 
     for (int allowed_char = 0; allowed_char<16; ++allowed_char){
@@ -85,20 +104,52 @@ bool checkInput(std::string input_from_user){
             }
         }
         if (present == false){
-            std::cout << "You entered a non valid character which is " << input_from_user[char_index] << ". Only '+','-','*','/', ',', '.' and figures are allowed" << std::endl;
+            std::cout << "You entered a non valid character (at least) which is " << input_from_user[char_index] << ". Only '+','-','*','/', ',', '.' and figures are allowed" << std::endl;
             return false;
         }
 
     }
 
-    //Here, the formula does not end or start with an operator, there are no spaces and no forbidden characters
+    return true;
+
+}
+
+
+bool checkInput(std::string input_from_user){
+
+    int size_of_string = input_from_user.size();
+
+    remove_space(input_from_user, size_of_string);
+
+    size_of_string = input_from_user.size();
+
+    //Checking if the input is not empty
+    if(is_input_empty(input_from_user, size_of_string) == false){
+        return false;
+    }
+
+    if(start_with_operator(input_from_user) == false){
+        return false;
+    }
+
+    if(end_with_operator(input_from_user, size_of_string) == false){
+        return false;
+    }
+
+    //Now we are checking if all the input characters are corrects
+
+    if(all_characters_are_valid(input_from_user,size_of_string) == false){
+        return false;
+    }
+
+    //Here, the formula does not end or start with an operator (except + which will be treated after), there are no spaces and no forbidden characters
     return true;
 
 }
 
 int main(){
 
-    std::string test = "-89 + &1 ";
+    std::string test = "89 + 1,. ";
     checkInput(test);
 
 }

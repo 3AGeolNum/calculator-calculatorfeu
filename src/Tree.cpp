@@ -5,9 +5,8 @@ Tree::Tree(std::string val, Tree* lhs, Tree* rhs) : val_(val), lhs_(lhs), rhs_(r
 }
 
 Tree::~Tree(){
-	if (lhs_ != nullptr) 
-		delete lhs_;
-		delete rhs_;
+	delete lhs_;
+	delete rhs_;
 }
 
 double Tree::eval(){

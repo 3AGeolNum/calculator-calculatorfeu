@@ -62,11 +62,11 @@ bool start_with_operator(std::string input_from_user){
 bool end_with_operator(std::string input_from_user, int size_of_string){
     //the string does not have any spaces, is not empty and does not start with an operator (except + or -)
     //Checking if the calculation ends with a '*' or a '/'
+
     const char* multiply = "*";
     const char* divide = "/";
     const char* pluss = "+";
     const char* minuss = "-";
-
 
     if (input_from_user[size_of_string -1] == *pluss || input_from_user[size_of_string -1] == *multiply || input_from_user[size_of_string -1] == *divide || input_from_user[size_of_string -1] == *minuss){
         std::cout << "Error : you put a '+', a '*', a '-' or a '/' at the end of the calculation" << std::endl;
@@ -114,6 +114,29 @@ bool all_characters_are_valid(std::string input_from_user, int size_of_string){
 
 }
 
+bool no_successive_operators(std::string input_from_user, int size_of_string){
+    //the string does not have any spaces, is not empty, does not start (except + or -) or end with an operator and does not have unwanted characters
+    //Checking if there are not two successive operator (except if there is a '-' in second position
+
+    char multiply = '*';
+    char divide = '/';
+    char pluss = '+';
+    char minuss = '-';
+
+    for (int char_index = 0; char_index < size_of_string-1; ++char_index){
+        //Checking if two successive characters are operator
+        char actual_char = input_from_user[char_index];
+        char next_char = input_from_user[char_index +1];
+        if( (actual_char == multiply || actual_char == divide || actual_char == pluss || actual_char == minuss)
+        && (next_char == multiply ||  next_char == divide || next_char == pluss)){
+           std::cout << "You put 2 operators side by side : "<<actual_char << " and " << next_char <<  " : please correct this" << std::endl;
+           return false;
+           }
+    }
+    return true;
+
+
+}
 
 bool checkInput(std::string input_from_user){
 
@@ -142,6 +165,9 @@ bool checkInput(std::string input_from_user){
         return false;
     }
 
+    if(no_successive_operators(input_from_user, size_of_string) == false){
+        return false;
+    }
     //Here, the formula does not end or start with an operator (except + which will be treated after), there are no spaces and no forbidden characters
     return true;
 
@@ -149,7 +175,7 @@ bool checkInput(std::string input_from_user){
 
 int main(){
 
-    std::string test = "89 + 1,. ";
+    std::string test = "89 + 2 +7 *8 +*2 ";
     checkInput(test);
 
 }

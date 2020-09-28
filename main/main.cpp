@@ -10,10 +10,9 @@ int main(){
 	
 	expresssion = input(expresssion);
 	
-	Tree* ptr_tree = process(input);
-	
-	double result = &ptr_tree.eval();
-	std::cout << "The result of the expression is " << result << endl;
+	Tree* ptr_tree = process(expression);
+	tree = &ptr_tree;
+	std::cout << "The result of the expression is " << tree.eval() << std::endl;
 	
 	return 0;
 }

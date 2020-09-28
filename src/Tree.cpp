@@ -4,7 +4,25 @@
 Tree::Tree(std::string val) : val_(val), lhs_(nullptr), rhs_(nullptr){
 }
 
-Tree::Tree(std::string val, Tree*& lhs, Tree*& rhs) : val_(val), lhs_(lhs), rhs_(rhs){
+Tree::Tree(std::string val, Tree* lhs, Tree* rhs) : val_(val){
+	rhs_ = new Tree(*rhs);
+	lhs_ = new Tree(*lhs);
+}
+
+Tree::Tree(const Tree& tree){
+	val_ = tree.val_;
+	if (tree.rhs_ == nullptr){
+		rhs_ = nullptr;	
+	}
+	else{
+		rhs_ = new Tree(*(tree.rhs_));
+	}
+	if (tree.lhs_ == nullptr){
+		lhs_ = nullptr;	
+	}
+	else{
+		lhs_ = new Tree(*(tree.lhs_));
+	}
 }
 
 Tree::~Tree(){

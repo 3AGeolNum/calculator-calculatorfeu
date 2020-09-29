@@ -12,4 +12,4 @@ add_test(NAME test_Tree COMMAND test_Tree)
 
 add_executable(test_Process test_Process.cpp)
 target_link_libraries(test_Process PUBLIC calculatorlib)
-add_test(NAME test_Process COMMAND test_Process)<<<<<<< HEAD
+add_test(NAME test_Process COMMAND test_Process)

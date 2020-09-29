@@ -22,6 +22,6 @@ int test_priorities(){
         while( tree.lhs_ != nullptr ){
 		assert( tree.rhs_ != nullptr );
 		
-	}
+		}
 	return 1;	
 }

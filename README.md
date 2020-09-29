@@ -37,10 +37,12 @@ Better than Water Calculator
 
 ### Linux (ubuntu) and Windows 10 (64 bits)
 
-```cmake -E make_directory build 
+```
+cmake -E make_directory build 
 cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release -DCOMPILE_EXE=[ON|OFF] -DCOMPILE_TESTS=[ON|OFF]
-cmake --build . --config Release```
+cmake --build . --config Release
+```
 
 To run tests
 ```ctest -C Release```

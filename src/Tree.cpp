@@ -24,6 +24,7 @@ Tree::Tree(const Tree& tree){
 	else{
 		lhs_ = new Tree(*(tree.lhs_));
 	}
+
 }
 
 Tree::~Tree(){

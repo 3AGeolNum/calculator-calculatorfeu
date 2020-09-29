@@ -1,34 +1,36 @@
 #include <Tree.h>
-#include <string>
 
 
-Tree::Tree(string val, Tree* lhs = nullptr, Tree* rhs = nullptr) : val_(val) lhs_(lhs), rhs_(rhs){
+Tree::Tree(std::string val, Tree* lhs, Tree* rhs) : val_(val), lhs_(lhs), rhs_(rhs){
 }
 
 Tree::~Tree(){
-	delete lhs;
-	delete rhs;
+	if (lhs_ != nullptr) 
+		delete lhs_;
+		delete rhs_;
 }
 
 double Tree::eval(){
-	if (lhs == nullptr && rhs == nullptr)
-		return (double) val;
-
-	else:
-		double lhs = lhs->eval();
-		double rhsval = rhs->eval();
-
-		switch val_:
-				case "+":
-					return lhs + rhs;
-				case "-":
-					return lhs - rhs;
-				case "*":
-					return lhs * rhs;
-				case "/":
-					return lhs / rhs;
+	if (lhs_ == nullptr && rhs_ == nullptr){
+		double value = std::stod(val_);
+		return value;
+	}
+	else {
+		double lhsval = lhs_->eval();
+		double rhsval = rhs_->eval();
+		char op = val_.c_str()[0];
+		switch(op){
+				case '+':
+					return lhsval + rhsval;
+				case '-':
+					return lhsval - rhsval;
+				case '*':
+					return lhsval * rhsval;
+				case '/':
+					return lhsval / rhsval;
 				default:
 					break;
+		}
 	}
 }
 

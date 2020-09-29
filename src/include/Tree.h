@@ -1,13 +1,14 @@
 #pragma once
+#include <string>
 
 class Tree{
 	public:
-		Tree(char val, Tree lhs = nullptr, Tree rhs = nullptr);
+		Tree(std::string val, Tree* lhs = nullptr, Tree* rhs = nullptr);
 		~Tree();
-		int eval();
+		double eval();
 
 	private:
 		Tree* lhs_;
 		Tree* rhs_;
-		char val_;
+		std::string val_;
 };

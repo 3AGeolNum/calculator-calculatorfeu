@@ -1,0 +1,5 @@
+// options and settings exported
+// to source code
+
+#define FireCalculatorCMake_VERSION_MAJOR @FireCalculatorCMake_VERSION_MAJOR@
+#define FireCalculatorCMake_VERSION_MINOR @FireCalculatorCMake_VERSION_MINOR@ 

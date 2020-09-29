@@ -5,6 +5,7 @@
 
 Tree* process(std::string input){
         std::string operators[4] = {"+", "-","*", "/"};
+	
 	// looking for an operator in the following order :  +, -, *, /
 	for( std::string::iterator iter_op = operators.begin(); iter_op != operators.end(); ++iter_op ){
                         
@@ -20,6 +21,7 @@ Tree* process(std::string input){
 				return new Tree( op, process(lhs), process(rhs) ); //recursive call
                         }
 		}
+
 	// if no operator was found:
 	return new Tree( input ); //no need to say the ptrs are nullptr: value by default in Tree()
 }

@@ -21,7 +21,8 @@ int main(){
 		Tree* ptr_tree2bis = &tree2bis;
 		tree3 = Tree("+", ptr_tree1bis, ptr_tree2bis);
 		}
-
+	std::cout << tree3.eval() << std::endl;
+/*
 
 	Tree tree4("-", ptr_tree1, ptr_tree2);
 	Tree tree5("*", ptr_tree1, ptr_tree2);
@@ -37,7 +38,7 @@ int main(){
 	}
 	else if (tree6.eval() != 0.5) {
 		return 1;
-	}
+	}*/
 
 	return 0;
 }

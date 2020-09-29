@@ -26,7 +26,7 @@ Tree::Tree(const Tree& tree){
 }
 
 Tree::~Tree(){
-/*
+
 	std::cout << "DESTRUCTOR " << this << std::endl;
 
 	if (lhs_ != nullptr){
@@ -39,7 +39,7 @@ Tree::~Tree(){
 
 		std::cout << "RHS NOT NULL for " << this << std::endl;
 		delete rhs_;
-	}*/
+	}
 }
 
 double Tree::eval(){

@@ -3,17 +3,18 @@
 #include <Process.h>
 
 int main(){
-
-	std::cout << "Write an expression to calculate\n";
 	std::string expression;
-	std::cin >> expression;
 	
-	expresssion = input(expresssion);
+	expression = getUserInput(expression);
+	while( !checkInput(expression) ){
+		expression = getUserInput(expression);
+	}
 	
-	Tree* ptr_tree = process(input);
+	expression = DoPreprocess(expression);
 	
-	double result = &ptr_tree.eval();
-	std::cout << "The result of the expression is " << result << endl;
+	Tree* ptr_tree = process(expression);
+	Tree tree = &ptr_tree;
+	std::cout << "Result: " << tree.eval() << std::endl;
 	
 	return 0;
 }

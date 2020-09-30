@@ -28,7 +28,6 @@ jobs:
         branch=`echo ${GITHUB_REF#*/*/}`
         echo Commit on branch $branch
         git checkout $branch
-        git add --all
         git commit -am "[Auto] Reformat"
         git push
   buildAndTest:

@@ -1,7 +1,7 @@
 #include <Tree.h>
 #include <iostream>
+#include <string>
 
-<<<<<<< HEAD
 Tree::Tree( std::string val ) : val_( val ), lhs_( nullptr ), rhs_( nullptr ) {}
 
 Tree::Tree( std::string val, Tree* lhs, Tree* rhs ) : val_( val )
@@ -71,6 +71,7 @@ double Tree::eval()
         case '/':
             return lhsval / rhsval;
         default:
+            return 0; // TODO
             break;
         }
     }

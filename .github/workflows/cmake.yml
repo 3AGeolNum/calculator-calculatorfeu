@@ -25,9 +25,8 @@ jobs:
       run: |
         git config --global user.name 'auto-reformat'
         git config --global user.email 'auto-reformat@auto.reformat'
-        branch=`echo ${GITHUB_REF#*/*/}`
+        branch=`echo ${GITHUB_REF##*/}`
         echo Commit on branch $branch
-        echo Variable2 for branch ${GITHUB_REF##*/}
         git checkout $branch
         git commit -am "[Auto] Reformat"
         git push

@@ -1,6 +1,6 @@
 #include <Process.h>
 
-Tree* doProcess( std::string input )
+Tree* do_process( std::string input )
 {
     std::string operators = "+-*/";
 
@@ -18,8 +18,8 @@ Tree* doProcess( std::string input )
                 std::string op = std::string( input, iter, 1 );
                 std::string rhs = std::string( input, iter + 1 );
 
-                return new Tree(
-                    op, doProcess( lhs ), doProcess( rhs ) ); // recursive call
+                return new Tree( op, do_process( lhs ),
+                    do_process( rhs ) ); // recursive call
             }
         }
     }

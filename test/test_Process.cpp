@@ -2,9 +2,9 @@
 
 int main()
 {
-    std::string input1 = "3+5/15*9-10";
+    std::string input1 = "3+5/15*9";
     Tree* ptr_tree1 = do_process( input1 );
-    if( ptr_tree1->eval() != -4 )
+    if( ptr_tree1->eval() != 6 )
     {
         return 1;
     }

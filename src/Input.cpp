@@ -230,7 +230,7 @@ void replace_operator_minus_divide(
     {
         // Checking if two successive characters are operator
         //'_' and '%' will be treated after : it is to say that '_' is a minus
-        //associated with a number (and not an operator) and '%' is a divide
+        // associated with a number (and not an operator) and '%' is a divide
         // that will be changed afterwards
 
         char actual_char = input_from_user[char_index];

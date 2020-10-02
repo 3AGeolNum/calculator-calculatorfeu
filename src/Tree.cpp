@@ -51,35 +51,38 @@ double Tree::eval()
 {
     if( lhs_ == nullptr && rhs_ == nullptr )
     {
-		//if it is a termination of the tree
-		//check if there is a substraction or a division and alter the value accordingly
+        // if it is a termination of the tree
+        // check if there is a substraction or a division and alter the value
+        // accordingly
         bool divide = convert_divide();
-        
+
         double value = std::stod( val_ );
 
         return ( divide ) ? 1 / value : value;
     }
     else
     {
-		//recursive call of the eval function on the different branch of the tree
+        // recursive call of the eval function on the different branch of the
+        // tree
         double lhsval = lhs_->eval();
         double rhsval = rhs_->eval();
         char op = val_.c_str()[0];
-		//treat the different cases. the other operator have been preprocessed in order
-        if (op == '+')
-		{
+        // treat the different cases. the other operator have been preprocessed
+        // in order
+        if( op == '+' )
+        {
             return lhsval + rhsval;
-		}        
-		else if (op == '*')
-		{
-            return lhsval * rhsval;  
-		}
+        }
+        else if( op == '*' )
+        {
+            return lhsval * rhsval;
+        }
     }
 }
 
 void Tree::convert_negative()
 {
-	// allow to change the string before converting it to a double
+    // allow to change the string before converting it to a double
     if( val_[0] == '_' )
     {
         val_[0] = '-';
@@ -88,12 +91,13 @@ void Tree::convert_negative()
 
 bool Tree::convert_divide()
 {
-	// change the val if there is a division indicator and return a boolean in that case
-	bool divide = false;
-	if ( val_[0] == '%' )
-	{
-		val_ = std::string( val_, 1 );
-		divide = true;
-	}
-	return divide;
+    // change the val if there is a division indicator and return a boolean in
+    // that case
+    bool divide = false;
+    if( val_[0] == '%' )
+    {
+        val_ = std::string( val_, 1 );
+        divide = true;
+    }
+    return divide;
 }

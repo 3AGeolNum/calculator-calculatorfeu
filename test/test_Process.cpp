@@ -2,7 +2,7 @@
 
 int main()
 {
-	//we are using preprocessed input
+    // we are using preprocessed input
     std::string input1 = "3+5*%15*9+_10";
     Tree* ptr_tree1 = do_process( input1 );
     if( ptr_tree1->eval() != -4 )

@@ -1,6 +1,6 @@
-#include <iostream>
 #include <Input.h>
 #include <Process.h>
+#include <iostream>
 
 int main()
 {

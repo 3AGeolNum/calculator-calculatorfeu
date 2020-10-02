@@ -13,6 +13,7 @@ env:
 
 jobs:
   reformat:
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     name: Automatic reformatting
     steps:
@@ -22,7 +23,7 @@ jobs:
       id: format
       uses: SKIRT/auto-format@master
     - name: Commit
-      if: steps.format.outputs.status == 'changed' && github.ref != 'refs/heads/master' && github.event_name != 'pull_request'
+      if: steps.format.outputs.status == 'changed' && github.ref != 'refs/heads/master'
       run: |
         git config --global user.name 'auto-reformat'
         git config --global user.email 'auto-reformat@auto.reformat'

@@ -307,7 +307,7 @@ void add_zero_after_alone_point(
     }
 }
 
-bool checkInput( std::string input_from_user )
+bool checkInput( std::string &input_from_user )
 {
     int size_of_string = input_from_user.size();
 
@@ -351,8 +351,5 @@ bool checkInput( std::string input_from_user )
 
     add_zero_after_alone_point( input_from_user, size_of_string );
 
-    std::cout << input_from_user << std::endl;
-    // Here, the formula does not end or start with an operator (except + which
-    // will be treated after), there are no spaces and no forbidden characters
     return true;
 }

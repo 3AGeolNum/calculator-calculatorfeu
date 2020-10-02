@@ -11,7 +11,8 @@ public:
     double eval();
 
 private:
-	void convertNegative();
+	bool convert_divide();
+	void convert_negative();
     Tree* lhs_;
     Tree* rhs_;
     std::string val_;

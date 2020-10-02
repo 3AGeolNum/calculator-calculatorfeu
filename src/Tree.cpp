@@ -4,12 +4,12 @@
 
 Tree::Tree( std::string val ) : val_( val ), lhs_( nullptr ), rhs_( nullptr )
 {
-    convertNegative();
+    convert_negative();
 }
 
 Tree::Tree( std::string val, Tree* lhs, Tree* rhs ) : val_( val )
 {
-    convertNegative();
+    convert_negative();
     rhs_ = new Tree( *rhs );
     lhs_ = new Tree( *lhs );
 }
@@ -51,36 +51,49 @@ double Tree::eval()
 {
     if( lhs_ == nullptr && rhs_ == nullptr )
     {
-        bool divide = false;
-        if( val_[0] == '%' )
-        {
-            divide = true;
-            val_ = std::string( val_, 1 );
-        }
-
+		//if it is a termination of the tree
+		//check if there is a substraction or a division and alter the value accordingly
+        bool divide = convert_divide();
+        
         double value = std::stod( val_ );
 
         return ( divide ) ? 1 / value : value;
     }
     else
     {
+		//recursive call of the eval function on the different branch of the tree
         double lhsval = lhs_->eval();
         double rhsval = rhs_->eval();
         char op = val_.c_str()[0];
-        switch( op )
-        {
-        case '+':
+		//treat the different cases. the other operator have been preprocessed in order
+        if (op == '+')
+		{
             return lhsval + rhsval;
-        case '*':
+		}        
+		else if (op == '*')
+		{
             return lhsval * rhsval;  
 		}
     }
 }
 
-void Tree::convertNegative()
+void Tree::convert_negative()
 {
+	// allow to change the string before converting it to a double
     if( val_[0] == '_' )
     {
         val_[0] = '-';
     }
+}
+
+bool Tree::convert_divide()
+{
+	// change the val if there is a division indicator and return a boolean in that case
+	bool divide = false;
+	if ( val_[0] == '%' )
+	{
+		val_ = std::string( val_, 1 );
+		divide = true;
+	}
+	return divide;
 }

@@ -8,7 +8,7 @@ std::string getUserInput()
     std::cout << "Please enter your calculation (only with '+','-','*','/', "
                  "',', '.' and figures)"
               << std::endl;
-    getline(std::cin,input_from_user);
+    getline( std::cin, input_from_user );
     std::cout << "You chose the calculation " << input_from_user << std::endl;
     return input_from_user;
 }

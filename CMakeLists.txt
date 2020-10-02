@@ -26,17 +26,17 @@ install(FILES ${PROJECT_BINARY_DIR}/FireCalculatorCMakeConfig.cmake DESTINATION 
 add_subdirectory(src)
 
 # about executable
-option(COMPILE_EXE "Compile executable" OFF)
+option(COMPILE_EXE "Compile executable" ON)
 
 if(COMPILE_EXE)
 	# add the executable (target)
 	message(STATUS "Configuring FireCalculator with .exe")
 	add_executable(calculator main/Calculator.cpp)
-	target_include_directories(calculator PRIVATE calculatorlib)
+	target_link_libraries(calculator PRIVATE calculatorlib)
 endif()
 
 # about tests
-option(COMPILE_TESTS "Compile tests" OFF)
+option(COMPILE_TESTS "Compile tests" ON)
 
 if(COMPILE_TESTS)
 	# Enable testings with CTest

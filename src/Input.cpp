@@ -1,21 +1,19 @@
+#include <Input.h>
 #include <algorithm>
 #include <iostream>
-#include <string>
 
-// This function allows to get the original input of the user
 std::string getUserInput()
 {
-    std::string input_from_user = "";
+    std::string input_from_user;
     std::cout << "Please enter your calculation (only with '+','-','*','/', "
                  "',', '.' and figures)"
               << std::endl;
-    std::cin >> input_from_user;
+    getline( std::cin, input_from_user );
     std::cout << "You chose the calculation " << input_from_user << std::endl;
     return input_from_user;
 }
 
-// It removes all the spaces in the calculation
-void remove_space( std::string &string_with_spaces, int size_of_string )
+void remove_space( std::string &string_with_spaces, const int &size_of_string )
 {
     // First function called in the process
     std::string str_without_spaces;
@@ -31,8 +29,8 @@ void remove_space( std::string &string_with_spaces, int size_of_string )
     string_with_spaces = str_without_spaces;
 }
 
-// It checks if the string is empty or not after removing the strings
-bool is_input_empty( std::string input_from_user, int size_of_string )
+bool is_input_empty(
+    const std::string &input_from_user, const int &size_of_string )
 {
     // the string does not have any spaces
 
@@ -47,7 +45,6 @@ bool is_input_empty( std::string input_from_user, int size_of_string )
     return true;
 }
 
-// Checking if the calculation begins with a '+', a '*' or a '/'
 bool start_with_operator( std::string &input_from_user, int &size_of_string )
 {
     // the string does not have any spaces and is not empty
@@ -81,8 +78,8 @@ bool start_with_operator( std::string &input_from_user, int &size_of_string )
     return true;
 }
 
-// Checking if the calculation ends with a '*', a '/', a '+' or a '-'
-bool end_with_operator( std::string input_from_user, int size_of_string )
+bool end_with_operator(
+    const std::string &input_from_user, const int &size_of_string )
 {
     // the string does not have any spaces, is not empty and does not start with
     // an operator (except + or -)
@@ -106,8 +103,8 @@ bool end_with_operator( std::string input_from_user, int size_of_string )
     return true;
 }
 
-// Checking if the characters are allowed
-bool all_characters_are_valid( std::string input_from_user, int size_of_string )
+bool all_characters_are_valid(
+    const std::string &input_from_user, const int &size_of_string )
 {
     // the string does not have any spaces, is not empty and does not start
     // (except + or -) or end with an operator
@@ -153,9 +150,8 @@ bool all_characters_are_valid( std::string input_from_user, int size_of_string )
     return true;
 }
 
-// Checking if there are not two successive operator (except if there is a '-'
-// in second position
-bool no_successive_operators( std::string input_from_user, int size_of_string )
+bool no_successive_operators(
+    const std::string &input_from_user, const int &size_of_string )
 {
     // the string does not have any spaces, is not empty, does not start (except
     // + or -) or end with an operator and does not have unwanted characters
@@ -191,8 +187,8 @@ bool no_successive_operators( std::string input_from_user, int size_of_string )
     return true;
 }
 
-// It replaces all the commas by points in order to be standard
-void replace_comma_by_point( std::string &input_from_user, int size_of_string )
+void replace_comma_by_point(
+    std::string &input_from_user, const int &size_of_string )
 {
     // All the functions above have been called ;
     for( int char_index = 0; char_index < size_of_string - 1; ++char_index )
@@ -204,8 +200,7 @@ void replace_comma_by_point( std::string &input_from_user, int size_of_string )
     }
 }
 
-// It replaces a non-operator '-' by an '_', and remove '--' at the beginning
-void replace_non_operator_minus(
+void replace_operator_minus_divide(
     std::string &input_from_user, int &size_of_string )
 {
     // Should be done before the checking of 2 following operators because it
@@ -236,10 +231,23 @@ void replace_non_operator_minus(
         {
             input_from_user[char_index + 1] = '_';
         }
+
+        else if( actual_char == minuss )
+        {
+            input_from_user[char_index] = '+';
+            input_from_user.insert( char_index + 1, "_" );
+            size_of_string++;
+        }
+
+        else if( actual_char == divide )
+        {
+            input_from_user[char_index] = '*';
+            input_from_user.insert( char_index + 1, "%" );
+            size_of_string++;
+        }
     }
 }
 
-// This function transforms a .5 into a 0.5
 void add_zero_before_alone_point(
     std::string &input_from_user, int &size_of_string )
 {
@@ -274,7 +282,6 @@ void add_zero_before_alone_point(
     }
 }
 
-// This function transforms a 5 into a 5.0
 void add_zero_after_alone_point(
     std::string &input_from_user, int &size_of_string )
 {
@@ -307,7 +314,7 @@ void add_zero_after_alone_point(
     }
 }
 
-bool checkInput( std::string &input_from_user )
+bool check_and_format_Input( std::string &input_from_user )
 {
     int size_of_string = input_from_user.size();
 
@@ -340,7 +347,7 @@ bool checkInput( std::string &input_from_user )
         return false;
     }
 
-    replace_non_operator_minus( input_from_user, size_of_string );
+    replace_operator_minus_divide( input_from_user, size_of_string );
 
     if( no_successive_operators( input_from_user, size_of_string ) == false )
     {
@@ -353,3 +360,9 @@ bool checkInput( std::string &input_from_user )
 
     return true;
 }
+
+// int main(){
+//    std::string test("1 +2.5 +2. -.5");
+//    checkInput(test);
+//    std::cout << test << std::endl;
+//}

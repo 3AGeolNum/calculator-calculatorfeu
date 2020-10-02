@@ -1,11 +1,12 @@
-#include <Input.cpp>
+<<<<<<< HEAD
+#include <Input.h>
 #include <Process.h>
-#include <iostream>
 
 int main()
 {
     std::string expression;
 
+<<<<<<< HEAD
     expression = getUserInput( expression );
     while( !checkInput( expression ) )
     {
@@ -13,8 +14,7 @@ int main()
     }
 
     Tree* ptr_tree = do_process( expression );
-    Tree tree = &ptr_tree;
-    std::cout << "Result: " << tree.eval() << std::endl;
+    std::cout << "Result: " << ptr_tree->eval() << std::endl;
 
     return 0;
 }

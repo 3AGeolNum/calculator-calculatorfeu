@@ -32,7 +32,7 @@ if(COMPILE_EXE)
 	# add the executable (target)
 	message(STATUS "Configuring FireCalculator with .exe")
 	add_executable(calculator main/Calculator.cpp)
-	target_include_directories(calculator PRIVATE calculatorlib)
+	target_link_libraries(calculator PRIVATE calculatorlib)
 endif()
 
 # about tests

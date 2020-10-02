@@ -6,7 +6,7 @@ int main()
     std::string expression;
 
     do{
-		expression = getUserInput( expression );
+		expression = getUserInput();
 	} while( !check_and_format_Input( expression ) );
 
     Tree* ptr_tree = do_process( expression );

@@ -236,12 +236,14 @@ void replace_operator_minus_divide(
         {
             input_from_user[char_index] = '+';
             input_from_user.insert( char_index + 1, "_" );
+            size_of_string++;
         }
 
         else if( actual_char == divide )
         {
             input_from_user[char_index] = '*';
             input_from_user.insert( char_index + 1, "%" );
+            size_of_string++;
         }
     }
 }

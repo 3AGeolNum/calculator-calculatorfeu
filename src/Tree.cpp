@@ -3,18 +3,22 @@
 #include <string>
 
 
-Tree::Tree( std::string val ) : val_( val ), lhs_( nullptr ), rhs_( nullptr ) {}
+Tree::Tree( std::string val ) : val_( val ), lhs_( nullptr ), rhs_( nullptr ) {
+	convertNegative();
+}
 
 
 Tree::Tree( std::string val, Tree* lhs, Tree* rhs ) : val_( val )
 {
-    rhs_ = new Tree( *rhs );
+
+	convertNegative();    
+	rhs_ = new Tree( *rhs );
     lhs_ = new Tree( *lhs );
 }
 
 
 Tree::Tree( const Tree& tree )
-{
+{	
     val_ = tree.val_;
     if( tree.rhs_ == nullptr )
     {
@@ -54,7 +58,7 @@ Tree::~Tree()
 double Tree::eval()
 {
     if( lhs_ == nullptr && rhs_ == nullptr )
-    {
+    {	
         double value = std::stod( val_ );
         return value;
     }
@@ -78,4 +82,10 @@ double Tree::eval()
             break;
         }
     }
+}
+
+void Tree::convertNegative(){
+	if (val_[0] == '_'){
+		val_[0] = '-';
+	}
 }

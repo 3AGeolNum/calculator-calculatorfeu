@@ -1,0 +1,56 @@
+Start testing: Oct 02 10:22 CEST
+----------------------------------------------------------
+1/2 Testing: test_Tree
+1/2 Test: test_Tree
+Command: "/media/o_espace_etudiant/Documents/ENSG_3A/SoftwareDevelopment/ProjetCalculette/calculator-calculatorfeu/buildLinux/test/test_Tree"
+Directory: /media/o_espace_etudiant/Documents/ENSG_3A/SoftwareDevelopment/ProjetCalculette/calculator-calculatorfeu/buildLinux/test
+"test_Tree" start time: Oct 02 10:22 CEST
+Output:
+----------------------------------------------------------
+DESTRUCTOR 0x7ffde32ceb90
+LHS NOT NULL for 0x7ffde32ceb90
+DESTRUCTOR 0x55a7918fe070
+RHS NOT NULL for 0x7ffde32ceb90
+DESTRUCTOR 0x55a7918fe030
+DESTRUCTOR 0x7ffde32ceb60
+LHS NOT NULL for 0x7ffde32ceb60
+DESTRUCTOR 0x55a7918fdff0
+RHS NOT NULL for 0x7ffde32ceb60
+DESTRUCTOR 0x55a7918fdfb0
+DESTRUCTOR 0x7ffde32ceb30
+LHS NOT NULL for 0x7ffde32ceb30
+DESTRUCTOR 0x55a7918fdf70
+RHS NOT NULL for 0x7ffde32ceb30
+DESTRUCTOR 0x55a7918fdf30
+DESTRUCTOR 0x7ffde32ceb00
+LHS NOT NULL for 0x7ffde32ceb00
+DESTRUCTOR 0x55a7918fdef0
+RHS NOT NULL for 0x7ffde32ceb00
+DESTRUCTOR 0x55a7918fdeb0
+DESTRUCTOR 0x7ffde32cead0
+DESTRUCTOR 0x7ffde32ceaa0
+DESTRUCTOR 0x7ffde32cea70
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test_Tree" end time: Oct 02 10:22 CEST
+"test_Tree" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/2 Testing: test_Process
+2/2 Test: test_Process
+Command: "/media/o_espace_etudiant/Documents/ENSG_3A/SoftwareDevelopment/ProjetCalculette/calculator-calculatorfeu/buildLinux/test/test_Process"
+Directory: /media/o_espace_etudiant/Documents/ENSG_3A/SoftwareDevelopment/ProjetCalculette/calculator-calculatorfeu/buildLinux/test
+"test_Process" start time: Oct 02 10:22 CEST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test_Process" end time: Oct 02 10:22 CEST
+"test_Process" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 02 10:22 CEST

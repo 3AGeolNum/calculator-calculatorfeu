@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/test_Process.dir/test_Process.cpp.o  -o test_Process ../src/libcalculatorlib.a 

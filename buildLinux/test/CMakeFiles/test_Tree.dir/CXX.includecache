@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/include/Tree.h
+string
+-
+
+/media/o_espace_etudiant/Documents/ENSG_3A/SoftwareDevelopment/ProjetCalculette/calculator-calculatorfeu/test/test_Tree.cpp
+Tree.h
+-
+iostream
+-
+string
+-
+

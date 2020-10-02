@@ -18,8 +18,8 @@ Tree* do_process( std::string input )
                 std::string op = std::string( input, iter, 1 );
                 std::string rhs = std::string( input, iter + 1 );
 
-                return new Tree(
-                    op, do_process( lhs ), do_process( rhs ) ); // recursive call
+                return new Tree( op, do_process( lhs ),
+                    do_process( rhs ) ); // recursive call
             }
         }
     }

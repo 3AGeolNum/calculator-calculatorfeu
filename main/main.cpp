@@ -6,7 +6,7 @@ int main()
 {
     std::string expression;
 
-    expression = getUserInput( expression );
+    expression = getUserInput(expression);
     while( !checkInput( expression ) )
     {
         expression = getUserInput( expression );

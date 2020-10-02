@@ -61,7 +61,7 @@ bool start_with_operator( std::string &input_from_user, int &size_of_string )
 
     if( size_of_string == 0 )
     {
-        std::cout << "After removing the '+' at the beginning your calculation "
+        std::cout << "Error : after removing the '+' at the beginning your calculation "
                      "is empty : please correct it"
                   << std::endl;
         return false;
@@ -139,7 +139,7 @@ bool all_characters_are_valid(
         if( present == false )
         {
             std::cout
-                << "You entered a non valid character (at least) which is "
+                << "Error : you entered a non valid character (at least) which is "
                 << input_from_user[char_index]
                 << ". Only '+','-','*','/', '.' and figures are allowed"
                 << std::endl;
@@ -172,14 +172,14 @@ bool no_successive_operators(
             && ( next_char == multiply || next_char == divide
                  || next_char == pluss ) )
         {
-            std::cout << "You put 2 operators side by side : " << actual_char
+            std::cout << "Error : you put 2 operators side by side : " << actual_char
                       << " and " << next_char << " : please correct this"
                       << std::endl;
             return false;
         }
         else if( actual_char == dot && next_char == dot )
         {
-            std::cout << "You put 2 dots side by side : please correct this"
+            std::cout << "Error : you put 2 dots side by side : please correct this"
                       << std::endl;
             return false;
         }
@@ -250,28 +250,9 @@ void replace_operator_minus_divide(
             }
         }
 
-        //        if( actual_char == minuss )
-        //        {
-        //            input_from_user[char_index] = '+';
-        //            input_from_user.insert( char_index + 1, "_" );
-        //            size_of_string++;
-        //        }
-
-        //        if( actual_char == divide )
-        //        {
-        //            input_from_user[char_index] = '*';
-        //            input_from_user.insert( char_index + 1, "%" );
-        //            size_of_string++;
-        //        }
-
-        //        actual_char = input_from_user[char_index];
-        //        next_char = input_from_user[char_index + 1];
-        //        if(actual_char == '_' && next_char == '_'){
-        //            input_from_user.erase(char_index,2);
-        //            size_of_string -=2;
     }
 }
-//}
+
 
 void transform_minus( std::string &input_from_user, int &size_of_string )
 {
@@ -382,6 +363,27 @@ void add_zero_after_alone_point(
     }
 }
 
+bool two_dots_before_operator(std::string &input_from_user, int &size_of_string ){
+
+    bool dot1 = false;
+    for( int char_index = 0; char_index < size_of_string - 1; ++char_index ){
+        if(input_from_user[char_index] == '.'){
+            if (dot1){
+                std::cout << "Error : you have 2 dots before an operator : please correct this" << std::endl;
+                return false;
+            }
+            dot1 = true;
+        }
+
+        else if(input_from_user[char_index] == '+' || input_from_user[char_index] == '-' || input_from_user[char_index] == '*' || input_from_user[char_index] == '/' ){
+            dot1 = false;
+        }
+
+    }
+    return true;
+
+}
+
 bool check_and_format_Input( std::string &input_from_user )
 {
     int size_of_string = input_from_user.size();
@@ -391,6 +393,10 @@ bool check_and_format_Input( std::string &input_from_user )
     size_of_string = input_from_user.size();
 
     replace_comma_by_point( input_from_user, size_of_string );
+
+    if(two_dots_before_operator(input_from_user, size_of_string) == false){
+        return false;
+    }
 
     // Checking if the input is not empty
     if( is_input_empty( input_from_user, size_of_string ) == false )
@@ -434,13 +440,7 @@ bool check_and_format_Input( std::string &input_from_user )
 
     add_zero_after_alone_point( input_from_user, size_of_string );
 
-    std::cout << input_from_user << std::endl;
-
     return true;
 }
 
-// int main(){
-//    std::string test("1 +2.5 +2. -.5");
-//    checkInput(test);
-//    std::cout << test << std::endl;
-//}
+

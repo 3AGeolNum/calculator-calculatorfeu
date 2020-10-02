@@ -1,36 +1,29 @@
-#pragma once
+#include <Process.h>
 
-#include <Tree.h>
-#include <string>
-
-Tree* process( std::string input )
+Tree* doProcess( std::string input )
 {
-    std::string ops[4] = { "+", "-", "*", "/" };
+    std::string operators = "+-*/";
 
-    /*
-
-    See later
-
-    // looking for an operator in the following order :  +, -, *, /
-    for( std::string::iterator it_op = ops.begin(); it_op != ops.end(); ++it_op
-    ){
-
+    // looking for +, -, *, / in that order :
+    for( int iter_op = 0; iter_op < 4; ++iter_op )
+    {
         // going through the string to find the operators
-            for( std::string::iterator it = input.begin(); it != input.end();
-    ++it ){
+        for( int iter = 0; iter < input.size(); ++iter )
+        {
+            if( operators[iter_op] == input[iter] )
+            {
+                // found an operator: cutting the string while omitting the
+                // operator and creating a new Tree
+                std::string lhs = std::string( input, 0, iter );
+                std::string op = std::string( input, iter, 1 );
+                std::string rhs = std::string( input, iter + 1 );
 
-            if( ops[it_op] == input[it] ){
-                //found an operator: cutting the string and creating a new Tree
-                std::string lhs = string(input.begin(), input.begin()+it-1);
-                std::string rhs = string(input.begin()+it+1, input.end()-1);
-                std::string op = ops[it_op];
-
-                return new Tree( op, process(lhs), process(rhs) ); //recursive
-    call
-                        }
+                return new Tree(
+                    op, doProcess( lhs ), doProcess( rhs ) ); // recursive call
+            }
         }
+    }
 
-    */
     // if no operator was found:
     return new Tree( input ); // no need to say the ptrs are nullptr: value by
                               // default in Tree()

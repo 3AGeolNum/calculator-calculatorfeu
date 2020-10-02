@@ -2,12 +2,9 @@
 #include <iostream>
 #include <string>
 
-<<<<<<< HEAD
-Tree::Tree(std::string val) : val_(val), lhs_(nullptr), rhs_(nullptr){
-}
-=======
+
 Tree::Tree( std::string val ) : val_( val ), lhs_( nullptr ), rhs_( nullptr ) {}
->>>>>>> 64cdf591f7b8d664eeb49ae04071f1d572f3128b
+
 
 Tree::Tree( std::string val, Tree* lhs, Tree* rhs ) : val_( val )
 {

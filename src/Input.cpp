@@ -61,7 +61,8 @@ bool start_with_operator( std::string &input_from_user, int &size_of_string )
 
     if( size_of_string == 0 )
     {
-        std::cout << "Error : after removing the '+' at the beginning your calculation "
+        std::cout << "Error : after removing the '+' at the beginning your "
+                     "calculation "
                      "is empty : please correct it"
                   << std::endl;
         return false;
@@ -138,11 +139,11 @@ bool all_characters_are_valid(
         }
         if( present == false )
         {
-            std::cout
-                << "Error : you entered a non valid character (at least) which is "
-                << input_from_user[char_index]
-                << ". Only '+','-','*','/', '.' and figures are allowed"
-                << std::endl;
+            std::cout << "Error : you entered a non valid character (at least) "
+                         "which is "
+                      << input_from_user[char_index]
+                      << ". Only '+','-','*','/', '.' and figures are allowed"
+                      << std::endl;
             return false;
         }
     }
@@ -172,15 +173,16 @@ bool no_successive_operators(
             && ( next_char == multiply || next_char == divide
                  || next_char == pluss ) )
         {
-            std::cout << "Error : you put 2 operators side by side : " << actual_char
-                      << " and " << next_char << " : please correct this"
-                      << std::endl;
+            std::cout << "Error : you put 2 operators side by side : "
+                      << actual_char << " and " << next_char
+                      << " : please correct this" << std::endl;
             return false;
         }
         else if( actual_char == dot && next_char == dot )
         {
-            std::cout << "Error : you put 2 dots side by side : please correct this"
-                      << std::endl;
+            std::cout
+                << "Error : you put 2 dots side by side : please correct this"
+                << std::endl;
             return false;
         }
     }
@@ -249,10 +251,8 @@ void replace_operator_minus_divide(
                 input_from_user[char_index + 1] = '_';
             }
         }
-
     }
 }
-
 
 void transform_minus( std::string &input_from_user, int &size_of_string )
 {
@@ -363,25 +363,33 @@ void add_zero_after_alone_point(
     }
 }
 
-bool two_dots_before_operator(std::string &input_from_user, int &size_of_string ){
-
+bool two_dots_before_operator(
+    std::string &input_from_user, int &size_of_string )
+{
     bool dot1 = false;
-    for( int char_index = 0; char_index < size_of_string - 1; ++char_index ){
-        if(input_from_user[char_index] == '.'){
-            if (dot1){
-                std::cout << "Error : you have 2 dots before an operator : please correct this" << std::endl;
+    for( int char_index = 0; char_index < size_of_string - 1; ++char_index )
+    {
+        if( input_from_user[char_index] == '.' )
+        {
+            if( dot1 )
+            {
+                std::cout << "Error : you have 2 dots before an operator : "
+                             "please correct this"
+                          << std::endl;
                 return false;
             }
             dot1 = true;
         }
 
-        else if(input_from_user[char_index] == '+' || input_from_user[char_index] == '-' || input_from_user[char_index] == '*' || input_from_user[char_index] == '/' ){
+        else if( input_from_user[char_index] == '+'
+                 || input_from_user[char_index] == '-'
+                 || input_from_user[char_index] == '*'
+                 || input_from_user[char_index] == '/' )
+        {
             dot1 = false;
         }
-
     }
     return true;
-
 }
 
 bool check_and_format_Input( std::string &input_from_user )
@@ -394,7 +402,8 @@ bool check_and_format_Input( std::string &input_from_user )
 
     replace_comma_by_point( input_from_user, size_of_string );
 
-    if(two_dots_before_operator(input_from_user, size_of_string) == false){
+    if( two_dots_before_operator( input_from_user, size_of_string ) == false )
+    {
         return false;
     }
 
@@ -442,5 +451,3 @@ bool check_and_format_Input( std::string &input_from_user )
 
     return true;
 }
-
-

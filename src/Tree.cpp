@@ -1,45 +1,57 @@
 #include <Tree.h>
 #include <iostream>
+#include <string>
 
+<<<<<<< HEAD
 Tree::Tree(std::string val) : val_(val), lhs_(nullptr), rhs_(nullptr){
 }
+=======
+Tree::Tree( std::string val ) : val_( val ), lhs_( nullptr ), rhs_( nullptr ) {}
+>>>>>>> 64cdf591f7b8d664eeb49ae04071f1d572f3128b
 
-Tree::Tree(std::string val, Tree* lhs, Tree* rhs) : val_(val){
-	rhs_ = new Tree(*rhs);
-	lhs_ = new Tree(*lhs);
+Tree::Tree( std::string val, Tree* lhs, Tree* rhs ) : val_( val )
+{
+    rhs_ = new Tree( *rhs );
+    lhs_ = new Tree( *lhs );
 }
 
-Tree::Tree(const Tree& tree){
-	val_ = tree.val_;
-	if (tree.rhs_ == nullptr){
-		rhs_ = nullptr;	
-	}
-	else{
-		rhs_ = new Tree(*(tree.rhs_));
-	}
-	if (tree.lhs_ == nullptr){
-		lhs_ = nullptr;	
-	}
-	else{
-		lhs_ = new Tree(*(tree.lhs_));
-	}
+
+Tree::Tree( const Tree& tree )
+{
+    val_ = tree.val_;
+    if( tree.rhs_ == nullptr )
+    {
+        rhs_ = nullptr;
+    }
+    else
+    {
+        rhs_ = new Tree( *( tree.rhs_ ) );
+    }
+    if( tree.lhs_ == nullptr )
+    {
+        lhs_ = nullptr;
+    }
+    else
+    {
+        lhs_ = new Tree( *( tree.lhs_ ) );
+    }
 }
 
-Tree::~Tree(){
+Tree::~Tree()
+{
+    std::cout << "DESTRUCTOR " << this << std::endl;
 
-	std::cout << "DESTRUCTOR " << this << std::endl;
+    if( lhs_ != nullptr )
+    {
+        std::cout << "LHS NOT NULL for " << this << std::endl;
 
-	if (lhs_ != nullptr){
-
-		std::cout << "LHS NOT NULL for " << this << std::endl;
-			
-		delete lhs_;
-	}
-	if (rhs_ != nullptr){	
-
-		std::cout << "RHS NOT NULL for " << this << std::endl;
-		delete rhs_;
-	}
+        delete lhs_;
+    }
+    if( rhs_ != nullptr )
+    {
+        std::cout << "RHS NOT NULL for " << this << std::endl;
+        delete rhs_;
+    }
 }
 
 double Tree::eval()
@@ -65,6 +77,7 @@ double Tree::eval()
         case '/':
             return lhsval / rhsval;
         default:
+            return 0; // TODO
             break;
         }
     }

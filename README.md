@@ -25,7 +25,7 @@ Better than Water Calculator
   |-- Input.cpp
   |-- Process.cpp
   |-- Tree.cpp
-|-- test
+|-- /test
   |-- CMakeLists.txt
   |-- test_Tree.cpp
 |-- .gitignore

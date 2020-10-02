@@ -5,6 +5,7 @@ on:
     branches-ignore:
        - 'master'
   pull_request:
+  workflow_dispatch:
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
@@ -21,11 +22,11 @@ jobs:
       id: format
       uses: SKIRT/auto-format@master
     - name: Commit
-      if: steps.format.outputs.status == 'changed'
+      if: steps.format.outputs.status == 'changed' && github.ref != 'refs/heads/master'
       run: |
         git config --global user.name 'auto-reformat'
         git config --global user.email 'auto-reformat@auto.reformat'
-        branch=`echo ${GITHUB_REF#*/*/}`
+        branch=`echo ${GITHUB_REF##*/}`
         echo Commit on branch $branch
         git checkout $branch
         git commit -am "[Auto] Reformat"

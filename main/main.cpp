@@ -10,9 +10,7 @@ int main(){
 		expression = getUserInput(expression);
 	}
 	
-	expression = DoPreprocess(expression);
-	
-	Tree* ptr_tree = process(expression);
+	Tree* ptr_tree = doProcess(expression);
 	Tree tree = &ptr_tree;
 	std::cout << "Result: " << tree.eval() << std::endl;
 	

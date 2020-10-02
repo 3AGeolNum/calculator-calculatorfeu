@@ -210,6 +210,7 @@ void remove_two_minus_beginning(
     }
 }
 
+
 void replace_operator_minus_divide(
     std::string &input_from_user, int &size_of_string )
 {
@@ -239,22 +240,81 @@ void replace_operator_minus_divide(
                 || actual_char == divide || actual_char == multiply )
             && next_char == minuss )
         {
-            input_from_user[char_index + 1] = '_';
+            while(input_from_user[char_index + 2] == minuss){
+                input_from_user.erase(char_index+1,2);
+                size_of_string-=2;
+            }
+            if(input_from_user[char_index + 1] == minuss){
+                input_from_user[char_index + 1] = '_';
+            }
+
         }
 
-        else if( actual_char == minuss )
+
+
+//        if( actual_char == minuss )
+//        {
+//            input_from_user[char_index] = '+';
+//            input_from_user.insert( char_index + 1, "_" );
+//            size_of_string++;
+//        }
+
+
+//        if( actual_char == divide )
+//        {
+//            input_from_user[char_index] = '*';
+//            input_from_user.insert( char_index + 1, "%" );
+//            size_of_string++;
+//        }
+
+//        actual_char = input_from_user[char_index];
+//        next_char = input_from_user[char_index + 1];
+//        if(actual_char == '_' && next_char == '_'){
+//            input_from_user.erase(char_index,2);
+//            size_of_string -=2;
+        }
+    }
+//}
+
+void transform_minus(std::string &input_from_user, int &size_of_string){
+
+    for( int char_index = 0; char_index < size_of_string - 1; ++char_index )
+    {
+        char actual_char = input_from_user[char_index];
+        if( actual_char == '-' )
         {
             input_from_user[char_index] = '+';
             input_from_user.insert( char_index + 1, "_" );
             size_of_string++;
         }
+}
+}
 
-        else if( actual_char == divide )
+void transform_divide(std::string &input_from_user, int &size_of_string){
+
+    for( int char_index = 0; char_index < size_of_string - 1; ++char_index )
+    {
+        char actual_char = input_from_user[char_index];
+        if( actual_char == '/' )
         {
             input_from_user[char_index] = '*';
             input_from_user.insert( char_index + 1, "%" );
             size_of_string++;
         }
+    }
+}
+
+void remove_following_underscore(std::string &input_from_user, int &size_of_string){
+
+    for( int char_index = 0; char_index < size_of_string - 1; ++char_index )
+    {
+        char actual_char = input_from_user[char_index];
+        char next_char = input_from_user[char_index + 1];
+        if(actual_char == '_' && next_char == '_'){
+            input_from_user.erase(char_index,2);
+            size_of_string -=2;
+        }
+
     }
 }
 
@@ -366,9 +426,17 @@ bool check_and_format_Input( std::string &input_from_user )
 
     replace_operator_minus_divide( input_from_user, size_of_string );
 
+    transform_minus(input_from_user, size_of_string);
+
+    transform_divide(input_from_user, size_of_string);
+
+    remove_following_underscore(input_from_user, size_of_string);
+
     add_zero_before_alone_point( input_from_user, size_of_string );
 
     add_zero_after_alone_point( input_from_user, size_of_string );
+
+    std::cout << input_from_user << std::endl;
 
     return true;
 }

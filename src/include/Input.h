@@ -32,6 +32,12 @@ void remove_two_minus_beginning(std::string &input_from_user, int &size_of_strin
 void replace_operator_minus_divide(
     std::string &input_from_user, int &size_of_string );
 
+void transform_minus(std::string &input_from_user, int &size_of_string);
+
+void transform_divide(std::string &input_from_user, int &size_of_string);
+
+void remove_following_underscore(std::string &input_from_user, int &size_of_string);
+
 // This function transforms a .5 into a 0.5
 void add_zero_before_alone_point(
     std::string &input_from_user, int &size_of_string );

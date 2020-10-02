@@ -71,15 +71,8 @@ double Tree::eval()
         {
         case '+':
             return lhsval + rhsval;
-        case '-':
-            return lhsval - rhsval;
         case '*':
             return lhsval * rhsval;
-        case '/':
-            return lhsval / rhsval;
-        default:
-            return 0; // TODO
-            break;
         }
     }
 }

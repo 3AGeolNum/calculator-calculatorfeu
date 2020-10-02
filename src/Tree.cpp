@@ -39,7 +39,6 @@ Tree::~Tree()
 {
     if( lhs_ != nullptr )
     {
-
         delete lhs_;
     }
     if( rhs_ != nullptr )

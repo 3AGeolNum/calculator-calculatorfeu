@@ -18,11 +18,13 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      if: github.event_name != 'pull_request'
     - name: Reformat
       id: format
       uses: SKIRT/auto-format@master
+      if: github.event_name != 'pull_request'
     - name: Commit
-      if: steps.format.outputs.status == 'changed' && github.ref != 'refs/heads/master'
+      if: steps.format.outputs.status == 'changed' && github.ref != 'refs/heads/master' && github.event_name != 'pull_request'
       run: |
         git config --global user.name 'auto-reformat'
         git config --global user.email 'auto-reformat@auto.reformat'

@@ -26,7 +26,7 @@ bool no_successive_operators( const std::string &input_from_user, const int &siz
 void replace_comma_by_point( std::string &input_from_user, const int &size_of_string );
 
 // It replaces a non-operator '-' by an '_', and remove '--' at the beginning
-void replace_non_operator_minus(
+void replace_operator_minus_divide(
     std::string &input_from_user, int &size_of_string );
 
 // This function transforms a .5 into a 0.5
@@ -37,4 +37,4 @@ void add_zero_before_alone_point(
 void add_zero_after_alone_point(
     std::string &input_from_user, int &size_of_string );
 
-bool checkInput( std::string &input_from_user );
+bool check_and_format_Input( std::string &input_from_user );

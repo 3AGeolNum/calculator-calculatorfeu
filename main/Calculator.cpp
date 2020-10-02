@@ -10,7 +10,7 @@ int main()
     do
     {
         expression = getUserInput();
-    } while( !checkInput( expression ) );
+    } while( !check_and_format_Input( expression ) );
 
     Tree* ptr_tree = doProcess( expression );
     Tree tree = *ptr_tree;

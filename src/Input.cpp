@@ -4,11 +4,11 @@
 
 std::string getUserInput()
 {
-    std::string input_from_user = "";
+    std::string input_from_user;
     std::cout << "Please enter your calculation (only with '+','-','*','/', "
                  "',', '.' and figures)"
               << std::endl;
-    std::cin >> input_from_user;
+    getline( std::cin, input_from_user );
     std::cout << "You chose the calculation " << input_from_user << std::endl;
     return input_from_user;
 }
@@ -200,7 +200,7 @@ void replace_comma_by_point(
     }
 }
 
-void replace_non_operator_minus(
+void replace_operator_minus_divide(
     std::string &input_from_user, int &size_of_string )
 {
     // Should be done before the checking of 2 following operators because it
@@ -230,6 +230,18 @@ void replace_non_operator_minus(
             && next_char == minuss )
         {
             input_from_user[char_index + 1] = '_';
+        }
+
+        else if( actual_char == minuss )
+        {
+            input_from_user[char_index] = '+';
+            input_from_user.insert( char_index + 1, "_" );
+        }
+
+        else if( actual_char == divide )
+        {
+            input_from_user[char_index] = '*';
+            input_from_user.insert( char_index + 1, "%" );
         }
     }
 }
@@ -300,7 +312,7 @@ void add_zero_after_alone_point(
     }
 }
 
-bool checkInput( std::string &input_from_user )
+bool check_and_format_Input( std::string &input_from_user )
 {
     int size_of_string = input_from_user.size();
 
@@ -333,7 +345,7 @@ bool checkInput( std::string &input_from_user )
         return false;
     }
 
-    replace_non_operator_minus( input_from_user, size_of_string );
+    replace_operator_minus_divide( input_from_user, size_of_string );
 
     if( no_successive_operators( input_from_user, size_of_string ) == false )
     {

@@ -232,14 +232,16 @@ void replace_operator_minus_divide(
             input_from_user[char_index + 1] = '_';
         }
 
-        else if (actual_char == minuss){
+        else if( actual_char == minuss )
+        {
             input_from_user[char_index] = '+';
-            input_from_user.insert(char_index+1,"_");
+            input_from_user.insert( char_index + 1, "_" );
         }
 
-        else if (actual_char == divide){
+        else if( actual_char == divide )
+        {
             input_from_user[char_index] = '*';
-            input_from_user.insert(char_index+1,"%");
+            input_from_user.insert( char_index + 1, "%" );
         }
     }
 }

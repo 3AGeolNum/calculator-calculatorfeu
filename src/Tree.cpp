@@ -57,15 +57,15 @@ double Tree::eval()
     if( lhs_ == nullptr && rhs_ == nullptr )
     {
         bool divide = false;
-        if(val_[0] == '%') {
-
+        if( val_[0] == '%' )
+        {
             divide = true;
-            val_ = std::string(val_, 1);
+            val_ = std::string( val_, 1 );
         }
 
         double value = std::stod( val_ );
 
-        return (divide) ? 1/value : value;
+        return ( divide ) ? 1 / value : value;
     }
     else
     {

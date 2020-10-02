@@ -200,6 +200,18 @@ void replace_comma_by_point(
     }
 }
 
+void remove_two_minus_beginning(std::string &input_from_user, int &size_of_string){
+
+    while( input_from_user[0] == '-' && input_from_user[1] == '-' )
+    {
+        input_from_user.erase( 0, 2 );
+        size_of_string -= 2;
+    }
+
+}
+
+
+
 void replace_operator_minus_divide(
     std::string &input_from_user, int &size_of_string )
 {
@@ -211,18 +223,18 @@ void replace_operator_minus_divide(
     char pluss = '+';
     char minuss = '-';
 
-    while( input_from_user[0] == '-' && input_from_user[1] == '-' )
-    {
-        input_from_user.erase( 0, 2 );
-        size_of_string -= 2;
-    }
+
     if( input_from_user[0] == '-' )
     {
         input_from_user[0] = '_';
     }
+
     for( int char_index = 0; char_index < size_of_string - 1; ++char_index )
     {
         // Checking if two successive characters are operator
+        //'_' and '%' will be treated after : it is to say that '_' is a minus associated with a number (and not an operator)
+        //and '%' is a divide that will be changed afterwards
+
         char actual_char = input_from_user[char_index];
         char next_char = input_from_user[char_index + 1];
         if( ( actual_char == minuss || actual_char == pluss
@@ -347,12 +359,14 @@ bool check_and_format_Input( std::string &input_from_user )
         return false;
     }
 
-    replace_operator_minus_divide( input_from_user, size_of_string );
+    remove_two_minus_beginning(input_from_user, size_of_string);
 
     if( no_successive_operators( input_from_user, size_of_string ) == false )
     {
         return false;
     }
+
+    replace_operator_minus_divide( input_from_user, size_of_string );
 
     add_zero_before_alone_point( input_from_user, size_of_string );
 

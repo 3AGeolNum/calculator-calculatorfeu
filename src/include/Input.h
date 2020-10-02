@@ -25,7 +25,10 @@ bool no_successive_operators( const std::string &input_from_user, const int &siz
 // It replaces all the commas by points in order to be standard
 void replace_comma_by_point( std::string &input_from_user, const int &size_of_string );
 
-// It replaces a non-operator '-' by an '_', and remove '--' at the beginning
+//It removes '--' at the beginning
+void remove_two_minus_beginning(std::string &input_from_user, int &size_of_string);
+
+// It replaces a non-operator '-' by an '_', replaces a '-' operator by a '+_' and a divide by '%' --> to be cleaned and separated
 void replace_operator_minus_divide(
     std::string &input_from_user, int &size_of_string );
 

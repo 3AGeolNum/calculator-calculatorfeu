@@ -22,8 +22,7 @@ jobs:
       id: format
       uses: SKIRT/auto-format@master
     - name: Commit
-      if: steps.format.outputs.status == 'changed'
-      if: github.ref != 'refs/heads/master'
+      if: steps.format.outputs.status == 'changed' && github.ref != 'refs/heads/master'
       run: |
         git config --global user.name 'auto-reformat'
         git config --global user.email 'auto-reformat@auto.reformat'

@@ -37,4 +37,4 @@ void add_zero_before_alone_point(
 void add_zero_after_alone_point(
     std::string &input_from_user, int &size_of_string );
 
-bool checkInput( std::string &input_from_user );
+bool check_and_format_Input( std::string &input_from_user );

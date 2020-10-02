@@ -1,2 +1,0 @@
-/usr/bin/ar qc libcalculatorlib.a  CMakeFiles/calculatorlib.dir/Input.cpp.o CMakeFiles/calculatorlib.dir/Process.cpp.o CMakeFiles/calculatorlib.dir/Tree.cpp.o
-/usr/bin/ranlib libcalculatorlib.a

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include <Input.h>
 #include <Process.h>
 

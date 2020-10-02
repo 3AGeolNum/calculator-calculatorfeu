@@ -16,5 +16,5 @@ int main()
     Tree tree = &ptr_tree;
     std::cout << "Result: " << tree.eval() << std::endl;
 
-	return 0;
+    return 0;
 }

@@ -2,14 +2,10 @@
 #include <iostream>
 #include <string>
 
-Tree::Tree( std::string val ) : val_( val ), lhs_( nullptr ), rhs_( nullptr )
-{
-    convert_negative();
-}
+Tree::Tree( std::string val ) : val_( val ), lhs_( nullptr ), rhs_( nullptr ){}
 
 Tree::Tree( std::string val, Tree* lhs, Tree* rhs ) : val_( val )
 {
-    convert_negative();
     rhs_ = new Tree( *rhs );
     lhs_ = new Tree( *lhs );
 }
@@ -55,7 +51,7 @@ double Tree::eval()
         // check if there is a substraction or a division and alter the value
         // accordingly
         bool divide = convert_divide();
-
+		convert_negative();
         double value = std::stod( val_ );
 
         return ( divide ) ? 1 / value : value;

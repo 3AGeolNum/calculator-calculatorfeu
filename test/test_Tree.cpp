@@ -4,7 +4,7 @@
 
 int main()
 {
-    Tree tree1 = Tree("3");
+    Tree tree1("3");
     
     Tree tree2("6");
     Tree* ptr_tree1 = &tree1;

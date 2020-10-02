@@ -1,7 +1,6 @@
 #include <Tree.h>
 #include <iostream>
 
-<<<<<<< HEAD
 Tree::Tree(std::string val) : val_(val), lhs_(nullptr), rhs_(nullptr){
 }
 
@@ -24,7 +23,6 @@ Tree::Tree(const Tree& tree){
 	else{
 		lhs_ = new Tree(*(tree.lhs_));
 	}
-
 }
 
 Tree::~Tree(){

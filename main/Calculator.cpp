@@ -5,11 +5,9 @@ int main()
 {
     std::string expression;
 
-    expression = getUserInput( expression );
-    while( !checkInput( expression ) )
-    {
-        expression = getUserInput( expression );
-    }
+    do{
+		expression = getUserInput( expression );
+	} while( !check_and_format_Input( expression ) );
 
     Tree* ptr_tree = do_process( expression );
     std::cout << "Result: " << ptr_tree->eval() << std::endl;

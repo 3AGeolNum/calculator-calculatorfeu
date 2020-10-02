@@ -27,5 +27,5 @@ Tree* doProcess(std::string input)
 
 	// if no operator was found:
 	return new Tree( input ); //no need to say the ptrs are nullptr: value by
-							  //default in Tree()
+							              //default in Tree()
 }

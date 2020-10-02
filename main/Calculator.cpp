@@ -1,21 +1,19 @@
 #include <Input.h>
 #include <Process.h>
+#include <Tree.h>
 #include <iostream>
 
 int main()
 {
     std::string expression;
 
-    expression = getUserInput( expression );
-    while( !checkInput( expression ) )
+    do
     {
-        expression = getUserInput( expression );
-    }
+        expression = getUserInput();
+    } while( !checkInput( expression ) );
 
-    expression = DoPreprocess( expression );
-
-    Tree* ptr_tree = process( expression );
-    Tree tree = &ptr_tree;
+    Tree* ptr_tree = doProcess( expression );
+    Tree tree = *ptr_tree;
     std::cout << "Result: " << tree.eval() << std::endl;
 
     return 0;

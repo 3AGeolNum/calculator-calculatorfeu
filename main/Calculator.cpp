@@ -1,7 +1,20 @@
 #include <iostream>
+#include <Input.cpp>
+#include <Process.h>
 
-int main(int argc, char** arv) {
-
-	std::cout << "Hello world!" << std::endl;
+int main(){
+	std::string expression;
+	
+	expression = getUserInput(expression);
+	while( !checkInput(expression) ){
+		expression = getUserInput(expression);
+	}
+	
+	expression = DoPreprocess(expression);
+	
+	Tree* ptr_tree = process(expression);
+	Tree tree = &ptr_tree;
+	std::cout << "Result: " << tree.eval() << std::endl;
+	
 	return 0;
 }

@@ -72,8 +72,8 @@ double Tree::eval()
         case '+':
             return lhsval + rhsval;
         case '*':
-            return lhsval * rhsval;  
-		}
+            return lhsval * rhsval;
+        }
     }
 }
 

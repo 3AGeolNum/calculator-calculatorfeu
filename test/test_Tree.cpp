@@ -10,12 +10,12 @@ int main()
 
     Tree tree3 = Tree( "_8" );
 
-	Tree tree4 = Tree( "%6" );
+    Tree tree4 = Tree( "%6" );
 
     Tree* ptr_tree1 = &tree1;
     Tree* ptr_tree2 = &tree2;
-	Tree* ptr_tree3 = &tree3;
-	Tree* ptr_tree4 = &tree4;
+    Tree* ptr_tree3 = &tree3;
+    Tree* ptr_tree4 = &tree4;
 
     Tree tree5( "+", ptr_tree1, ptr_tree2 );
     Tree tree6( "+", ptr_tree1, ptr_tree3 );

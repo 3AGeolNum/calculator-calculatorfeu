@@ -161,7 +161,6 @@ bool no_successive_operators(
     char divide = '/';
     char pluss = '+';
     char minuss = '-';
-    char dot = '.';
 
     for( int char_index = 0; char_index < size_of_string - 1; ++char_index )
     {
@@ -176,13 +175,6 @@ bool no_successive_operators(
             std::cout << "Error : you put 2 operators side by side : "
                       << actual_char << " and " << next_char
                       << " : please correct this" << std::endl;
-            return false;
-        }
-        else if( actual_char == dot && next_char == dot )
-        {
-            std::cout
-                << "Error : you put 2 dots side by side : please correct this"
-                << std::endl;
             return false;
         }
     }
@@ -212,7 +204,7 @@ void remove_two_minus_beginning(
     }
 }
 
-void replace_operator_minus_divide(
+void replace_non_operator_minus(
     std::string &input_from_user, int &size_of_string )
 {
     // Should be done before the checking of 2 following operators because it
@@ -364,7 +356,7 @@ void add_zero_after_alone_point(
 }
 
 bool two_dots_before_operator(
-    std::string &input_from_user, int &size_of_string )
+    const std::string &input_from_user, const int &size_of_string )
 {
     bool dot1 = false;
     for( int char_index = 0; char_index < size_of_string - 1; ++char_index )
@@ -437,7 +429,7 @@ bool check_and_format_Input( std::string &input_from_user )
         return false;
     }
 
-    replace_operator_minus_divide( input_from_user, size_of_string );
+    replace_non_operator_minus( input_from_user, size_of_string );
 
     transform_minus( input_from_user, size_of_string );
 

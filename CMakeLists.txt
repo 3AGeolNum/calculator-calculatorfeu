@@ -36,7 +36,7 @@ if(COMPILE_EXE)
 endif()
 
 # about tests
-option(COMPILE_TESTS "Compile tests" ON)
+option(COMPILE_TESTS "Compile tests" OFF)
 
 if(COMPILE_TESTS)
 	# Enable testings with CTest

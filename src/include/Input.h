@@ -28,14 +28,17 @@ void replace_comma_by_point( std::string &input_from_user, const int &size_of_st
 //It removes '--' at the beginning
 void remove_two_minus_beginning(std::string &input_from_user, int &size_of_string);
 
-// It replaces a non-operator '-' by an '_', replaces a '-' operator by a '+_' and a divide by '%' --> to be cleaned and separated
-void replace_operator_minus_divide(
+// It replaces a non-operator '-' by an '_'
+void replace_non_operator_minus(
     std::string &input_from_user, int &size_of_string );
 
+// It replaces an operator '-' by '+_' : '_' will be treated after
 void transform_minus(std::string &input_from_user, int &size_of_string);
 
+// It replaces '/' by '*%' so we have a multiplication : '%' will be treated after
 void transform_divide(std::string &input_from_user, int &size_of_string);
 
+// It removes '_' if too many are side by side.
 void remove_following_underscore(std::string &input_from_user, int &size_of_string);
 
 // This function transforms a .5 into a 0.5
@@ -46,6 +49,8 @@ void add_zero_before_alone_point(
 void add_zero_after_alone_point(
     std::string &input_from_user, int &size_of_string );
 
-bool two_dots_before_operator(std::string &input_from_user, int &size_of_string );
+// This function checks if two dots are not before an operator (e.g : 0.2.5 + 2)
+bool two_dots_before_operator(const std::string &input_from_user, const int &size_of_string );
 
+//Final function that calls all the others in the correct order
 bool check_and_format_Input( std::string &input_from_user );

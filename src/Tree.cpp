@@ -68,7 +68,7 @@ double Tree::eval()
     {
         // recursive call of the eval function on the different branch of the
         // tree
-		assert(lhs_ != nullptr and rhs_ != nullptr);
+		assert(lhs_ != nullptr && rhs_ != nullptr);
         double lhsval = lhs_->eval();
         double rhsval = rhs_->eval();
         char op = val_.c_str()[0];

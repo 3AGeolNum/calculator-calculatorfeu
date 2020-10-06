@@ -1,10 +1,9 @@
 #include <Tree.h>
+#include <assert.h>
 #include <iostream>
 #include <string>
-#include <assert.h>
 
-Tree::Tree( std::string val ) : val_( val ), lhs_( nullptr ), rhs_( nullptr ) {
-}
+Tree::Tree( std::string val ) : val_( val ), lhs_( nullptr ), rhs_( nullptr ) {}
 
 Tree::Tree( std::string val, Tree* lhs, Tree* rhs ) : val_( val )
 {
@@ -68,7 +67,9 @@ double Tree::eval()
     {
         // recursive call of the eval function on the different branch of the
         // tree
+
 		assert(lhs_ != nullptr && rhs_ != nullptr);
+
         double lhsval = lhs_->eval();
         double rhsval = rhs_->eval();
         char op = val_.c_str()[0];
@@ -82,7 +83,7 @@ double Tree::eval()
         {
             return lhsval * rhsval;
         }
-		throw std::string("Unknown sign");
+        throw std::string( "Unknown sign" );
     }
 }
 

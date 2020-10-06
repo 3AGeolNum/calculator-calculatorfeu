@@ -53,8 +53,14 @@ double Tree::eval()
         bool divide = convert_divide();
         convert_negative();
         double value = std::stod( val_ );
-
-        return ( divide ) ? 1 / value : value;
+        if( divide && value == 0 )
+        {
+            throw std::string( "Error division by 0" );
+        }
+        else
+        {
+            return ( divide ) ? 1 / value : value;
+        }
     }
     else
     {

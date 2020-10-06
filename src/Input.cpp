@@ -356,7 +356,7 @@ void add_zero_after_alone_point(
 }
 
 bool two_dots_before_operator(
-    std::string &input_from_user, int &size_of_string )
+    const std::string &input_from_user, const int &size_of_string )
 {
     bool dot1 = false;
     for( int char_index = 0; char_index < size_of_string - 1; ++char_index )

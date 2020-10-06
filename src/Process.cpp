@@ -2,10 +2,10 @@
 
 Tree* do_process( std::string input )
 {
-    std::string operators = "+-*/";
+    std::string operators = "+*";
 
     // looking for +, -, *, / in that order :
-    for( int iter_op = 0; iter_op < 4; ++iter_op )
+    for( int iter_op = 0; iter_op < 2; ++iter_op )
     {
         // going through the string to find the operators
         for( int iter = 0; iter < input.size(); ++iter )

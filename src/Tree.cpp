@@ -44,36 +44,40 @@ Tree::~Tree()
 }
 
 double Tree::eval()
-{
-    if( lhs_ == nullptr && rhs_ == nullptr )
-    {
-        // if it is a termination of the tree
-        // check if there is a substraction or a division and alter the value
-        // accordingly
-        bool divide = convert_divide();
-        convert_negative();
-        double value = std::stod( val_ );
-
-        return ( divide ) ? 1 / value : value;
-    }
-    else
-    {
-        // recursive call of the eval function on the different branch of the
-        // tree
-        double lhsval = lhs_->eval();
-        double rhsval = rhs_->eval();
-        char op = val_.c_str()[0];
-        // treat the different cases. the other operator have been preprocessed
-        // in order
-        if( op == '+' )
-        {
-            return lhsval + rhsval;
-        }
-        else if( op == '*' )
-        {
-            return lhsval * rhsval;
-        }
-    }
+{	
+	if( lhs_ == nullptr && rhs_ == nullptr )
+	{
+	    // if it is a termination of the tree
+	    // check if there is a substraction or a division and alter the value
+	    // accordingly
+	    bool divide = convert_divide();
+	    convert_negative();
+	    double value = std::stod( val_ );
+		if (divide && value == 0){
+			throw std::string("Error division by 0");
+		}
+		else{
+	    	return ( divide ) ? 1 / value : value;
+		}
+	}
+	else
+	{
+	    // recursive call of the eval function on the different branch of the
+	    // tree
+	    double lhsval = lhs_->eval();
+	    double rhsval = rhs_->eval();
+	    char op = val_.c_str()[0];
+	    // treat the different cases. the other operator have been preprocessed
+	    // in order
+	    if( op == '+' )
+	    {
+	        return lhsval + rhsval;
+	    }
+	    else if( op == '*' )
+	    {
+	        return lhsval * rhsval;
+	    }
+	}
 }
 
 void Tree::convert_negative()
